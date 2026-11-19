@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101913">
+  <meta name="description" content="A pocket-sized dungeon adventure. Explore, outsmart little monsters, and grow stronger with every floor.">
+  <title>Little Lantern — A pocket dungeon</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="welcome screen active" id="welcome" aria-labelledby="welcome-title">
+      <div class="welcome-top"><span class="brand-mark">✳</span><span>POCKET ADVENTURES</span><span class="sound-note">MADE FOR THE SMALL SCREEN</span></div>
+      <div class="welcome-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> YOUR NEXT LITTLE ADVENTURE</p>
+        <h1 id="welcome-title">A world of wonder,<br><em>one room at a time.</em></h1>
+        <p class="welcome-text">A cozy little dungeon full of curious creatures, hidden treasures, and new things to learn.</p>
+        <button class="primary-button" id="start-button">Enter the dungeon <span aria-hidden="true">↗</span></button>
+        <p class="control-hint">MOVE WITH THE JOYSTICK <span>·</span> SWING TO ATTACK</p>
+      </div>
+      <div class="welcome-art" aria-hidden="true">
+        <div class="art-glow"></div><div class="art-spark spark-one">✦</div><div class="art-spark spark-two">✧</div>
+        <div class="arch"><div class="arch-inner"><div class="room-floor"></div><div class="room-door"><span></span></div><div class="room-mushroom">●</div><div class="room-player"><i></i><b></b></div><div class="room-stone stone-a"></div><div class="room-stone stone-b"></div></div></div>
+        <span class="art-caption">THE MOSSY DEPTHS <b>·</b> FLOOR 01</span>
+      </div>
+      <footer class="welcome-footer"><span>✳ &nbsp;TAKE YOUR TIME. FIND YOUR WAY.</span><span>BEST PLAYED WITH SOUND ON</span></footer>
+    </section>
+
+    <section class="game screen" id="game" aria-label="Dungeon game">
+      <header class="game-header">
+        <a class="game-brand" href="#" id="home-button" aria-label="Return to welcome screen"><span class="brand-mark">✳</span><span>LITTLE<br>LANTERN</span></a>
+        <div class="floor-title"><span>THE MOSSY DEPTHS</span><strong id="floor-label">FLOOR 01</strong></div>
+        <button class="icon-button" id="pause-button" aria-label="Pause game"><span>Ⅱ</span></button>
+      </header>
+      <div class="stats-row">
+        <div class="health-block"><span class="stat-label">HEARTS</span><div class="hearts" id="hearts" aria-label="3 hearts">♥ ♥ ♥</div></div>
+        <div class="xp-block"><div class="xp-heading"><span class="stat-label">GROWING STRONGER</span><span class="level-label" id="level-label">LVL 1</span></div><div class="xp-track"><span id="xp-fill"></span></div></div>
+        <div class="coin-block"><span class="coin-icon">✦</span><span id="coin-count">0</span></div>
+      </div>
+      <div class="game-board-wrap">
+        <div class="board-topline"><span><i class="live-dot"></i> EXPLORING</span><span id="room-count">ROOM 1 OF 4</span></div>
+        <div class="board-frame"><canvas id="game-canvas" aria-label="Top-down dungeon, use the controls below to move and attack"></canvas><div id="toast" class="toast" aria-live="polite"></div>
+          <div class="overlay" id="pause-overlay"><div class="overlay-card"><div class="overlay-icon">Ⅱ</div><span class="eyebrow">TAKE A BREATHER</span><h2>Adventure paused</h2><p>Your little world will be right here when you're ready.</p><button class="primary-button" id="resume-button">Back to exploring <span>↗</span></button></div></div>
+          <div class="overlay" id="upgrade-overlay"><div class="overlay-card upgrade-card"><div class="overlay-icon">✦</div><span class="eyebrow">A LITTLE STRONGER</span><h2>Pick an upgrade</h2><p>Every good adventure makes room to grow.</p><div class="upgrade-options" id="upgrade-options"></div></div></div>
+          <div class="overlay" id="floor-overlay"><div class="overlay-card recap-card"><div class="overlay-icon">✦</div><span class="eyebrow">FLOOR COMPLETE</span><h2 id="floor-title">Floor 01 cleared!</h2><p id="floor-copy">Every dungeon cleared. What a lovely run!</p><div class="run-stats" id="floor-stats"></div><p class="run-highlight" id="floor-highlight"></p><section class="floor-record"><span>PERSONAL BEST BOARD</span><strong id="floor-record-title">Your floor record</strong><small id="floor-record-detail"></small></section><button class="primary-button" id="continue-button">Continue to next floor <span>↗</span></button></div></div>
+          <div class="overlay" id="end-overlay"><div class="overlay-card recap-card"><div class="overlay-icon" id="end-icon">✳</div><span class="eyebrow" id="end-eyebrow">WELL WANDERED</span><h2 id="end-title">A lovely little run</h2><p id="end-copy">Every adventure is a story worth keeping.</p><div class="run-stats" id="run-stats"></div><p class="run-highlight" id="run-highlight"></p><p class="personal-best" id="personal-best"></p><button class="primary-button" id="restart-button">Start a new adventure <span>↗</span></button></div></div>
+        </div>
+      </div>
+      <section class="controls" aria-label="Game controls">
+        <div class="move-control"><div class="control-caption"><span class="control-icon">⌖</span><span>MOVE</span></div><div class="joystick" id="joystick" aria-label="Movement joystick" role="application"><div class="joy-ring"><div class="joy-knob" id="joy-knob"><span></span></div></div></div></div>
+        <div class="control-center"><span class="tip-pill"><span>✧</span> FIND THE LITTLE DOOR TO GO DEEPER</span><span class="auto-note">SWING TO ATTACK · AUTO AIM</span></div>
+        <button class="attack-button" id="attack-button" aria-label="Attack nearby monsters"><span class="sword-icon">⚔</span><span>SWING</span><small>AUTO AIM</small></button>
+      </section>
+      <footer class="game-footer"><span><i class="live-dot"></i> A QUIET PLACE TO WANDER</span><span>STAY CURIOUS <b>✳</b></span></footer>
+    </section>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
